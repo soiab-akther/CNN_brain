@@ -66,9 +66,9 @@ image = st.file_uploader(
     "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
 show_description = st.checkbox("Show model description")
 describe_model(show_description)
-if image is not None:
-    display_image_details(image)
-    given_image = load_image(image)
+    if image is not None:
+        display_image_details(image)
+        given_image = load_image(image)
 
 
 model = keras.models.load_model("model.h5")
