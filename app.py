@@ -62,7 +62,7 @@ model.compile(loss = 'binary_crossentropy',
             '''
         )
 
-display_image_details(image)
+#display_image_details(image)
     
 st.write(details)
 given_image = f_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
