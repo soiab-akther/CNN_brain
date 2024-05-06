@@ -63,7 +63,7 @@ model.compile(loss = 'binary_crossentropy',
     
 if image is not None:
     display_image_details(image)
-    load_image(image)
+    given_image = load_image(image)
     model = keras.models.load_model("model.h5")
     prediction = round(model.predict(given_image)[0][0] * 100, 2)
     st.subheader("Model Prediction")
