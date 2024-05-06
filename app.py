@@ -35,8 +35,11 @@ st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
             diagnosis for the existence of a tumor in a given brain MRI\
             image.')
 st.header('Team Members')
-st.subheader('Sk. Soaib Akther - 20311A0588\
-            Bonthu Jitendra - 20311A05B2')
+st.subheader('''
+Sk. Soaib Akther - 20311A0588
+Bonthu Jitendra - 20311A05B2
+'''
+            )
 st.image('nn.png', caption="Model Architecture")
 image = st.file_uploader("Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
 show_description = st.checkbox("Show model description")
