@@ -64,11 +64,10 @@ model.compile(loss = 'binary_crossentropy',
 
 if image is not None:
     st.markdown(" The details of the uploaded file are : ")
-    details = {
-        "File Name": image.name,
-        "File Type": image.type,
-        "File Size": str(image.size/100) + "KB",
-    }
+details = {
+    "File Name": image.name,
+    "File Type": image.type,
+    "File Size": str(image.size/100) + "KB"}
     
 st.write(details)
 given_image = f_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
