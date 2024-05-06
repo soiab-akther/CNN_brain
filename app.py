@@ -60,23 +60,14 @@ model.compile(loss = 'binary_crossentropy',
              metrics = ['accuracy'])
             '''
         )
-
-#display_image_details(image)
     
-#st.write(details)
-given_image = f_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
-img = cv2.imdecode(f_bytes, cv2.IMREAD_GRAYSCALE)
-st.image(img, caption="Uploaded MRI Image", width=400)
-
-    # Preprocessing the image
-img = cv2.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
-img = img.reshape(-1, IMAGE_SIZE, IMAGE_SIZE, 1) / 255.0
-
-
-model = keras.models.load_model("model.h5")
-prediction = round(model.predict(given_image)[0][0] * 100, 2)
-st.subheader("Model Prediction")
-if prediction > 75:
-    st.error(f"The Model Predicts that the image has tumor. Chance: {prediction} %")
-else:
-    st.success(f"The model predicts there is no tumor in the given image. Chance: {prediction} %")
+if image is not None:
+    display_image_details(image)
+    load_image(image)
+    model = keras.models.load_model("model.h5")
+    prediction = round(model.predict(given_image)[0][0] * 100, 2)
+    st.subheader("Model Prediction")
+    if prediction > 75:
+        st.error(f"The Model Predicts that the image has tumor. Chance: {prediction} %")
+    else:
+        st.success(f"The model predicts there is no tumor in the given image. Chance: {prediction} %")
