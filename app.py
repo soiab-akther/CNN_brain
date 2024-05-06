@@ -34,12 +34,11 @@ st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
             for Tumor Detection.  This application aims to provide prior\
             diagnosis for the existence of a tumor in a given brain MRI\
             image.')
-image = st.file_uploader(
-    "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
+image = st.file_uploader("Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
 show_description = st.checkbox("Show model description")
-
-st.code(
-            '''
+if show_description:
+    st.code(
+                '''
 model = Sequential()
 model.add(Conv2D(64, (3,3), input_shape = X_train.shape[1:]))
 model.add(Activation("relu"))
