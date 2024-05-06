@@ -64,7 +64,7 @@ model.compile(loss = 'binary_crossentropy',
 
 #display_image_details(image)
     
-st.write(details)
+#st.write(details)
 given_image = f_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
 img = cv2.imdecode(f_bytes, cv2.IMREAD_GRAYSCALE)
 st.image(img, caption="Uploaded MRI Image", width=400)
