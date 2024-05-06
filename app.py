@@ -27,9 +27,18 @@ def display_image_details(image):
     st.write(details)
 
 
-def describe_model(desc):
-    if desc:
-        st.code(
+st.image('nn.png', caption="Model Architecture")
+st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
+st.title("Brain Tumor Detection")
+st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
+            for Tumor Detection.  This application aims to provide prior\
+            diagnosis for the existence of a tumor in a given brain MRI\
+            image.')
+image = st.file_uploader(
+    "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
+show_description = st.checkbox("Show model description")
+
+st.code(
             '''
 model = Sequential()
 model.add(Conv2D(64, (3,3), input_shape = X_train.shape[1:]))
@@ -53,22 +62,22 @@ model.compile(loss = 'binary_crossentropy',
             '''
         )
 
-
-
-st.image('nn.png', caption="Model Architecture")
-st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
-st.title("Brain Tumor Detection")
-st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
-            for Tumor Detection.  This application aims to provide prior\
-            diagnosis for the existence of a tumor in a given brain MRI\
-            image.')
-image = st.file_uploader(
-    "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
-show_description = st.checkbox("Show model description")
-describe_model(show_description)
 if image is not None:
-    display_image_details(image)
-    given_image = load_image(image)
+    st.markdown(" The details of the uploaded file are : ")
+    details = {
+        "File Name": image.name,
+        "File Type": image.type,
+        "File Size": str(image.size/100) + "KB",
+    }
+    
+st.write(details)
+given_image = f_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
+img = cv2.imdecode(f_bytes, cv2.IMREAD_GRAYSCALE)
+st.image(img, caption="Uploaded MRI Image", width=400)
+
+    # Preprocessing the image
+img = cv2.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
+img = img.reshape(-1, IMAGE_SIZE, IMAGE_SIZE, 1) / 255.0
 
 
 model = keras.models.load_model("model.h5")
