@@ -53,7 +53,7 @@ model.compile(loss = 'binary_crossentropy',
             '''
         )
         st.image(
-            'https://raw.githubusercontent.com/hemanth-kotagiri/brain-tumor-detection/master/nn.png', caption="Model Architecture")
+            './nn.png', caption="Model Architecture")
 
 
 def main():
