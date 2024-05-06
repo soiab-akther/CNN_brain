@@ -27,13 +27,14 @@ def display_image_details(image):
     st.write(details)
 
 
-st.image('nn.png', caption="Model Architecture")
-#st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
+
+st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
 st.title("Brain Tumor Detection")
 st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
             for Tumor Detection.  This application aims to provide prior\
             diagnosis for the existence of a tumor in a given brain MRI\
             image.')
+st.image('nn.png', caption="Model Architecture")
 image = st.file_uploader("Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
 show_description = st.checkbox("Show model description")
 if show_description:
