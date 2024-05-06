@@ -66,17 +66,15 @@ image = st.file_uploader(
     "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
 show_description = st.checkbox("Show model description")
 describe_model(show_description)
-    if image is not None:
-        display_image_details(image)
-        given_image = load_image(image)
+if image is not None:
+    display_image_details(image)
+    given_image = load_image(image)
 
 
 model = keras.models.load_model("model.h5")
 prediction = round(model.predict(given_image)[0][0] * 100, 2)
 st.subheader("Model Prediction")
-    if prediction > 75:
-        st.error(
-            f"The Model Predicts that the image has tumor. Chance: {prediction} %")
-    else:
-        st.success(
-            f"The model predicts there is no tumor in the given image. Chance: {prediction} %")
+if prediction > 75:
+    st.error(f"The Model Predicts that the image has tumor. Chance: {prediction} %")
+else:
+    st.success(f"The model predicts there is no tumor in the given image. Chance: {prediction} %")
