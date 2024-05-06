@@ -36,7 +36,7 @@ st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
             image.')
 st.header('Team Members')
 st.caption('''
-Sk. Soaib Akther - 20311A0588 \t
+Sk. Soaib Akther - 20311A0588                                         
 Bonthu Jitendra - 20311A05B2
 ''')
 
