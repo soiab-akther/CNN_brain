@@ -53,7 +53,7 @@ model.compile(loss = 'binary_crossentropy',
             '''
         )
         st.image(
-            './nn.png', caption="Model Architecture")
+            'nn.png', caption="Model Architecture")
 
 
 st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
