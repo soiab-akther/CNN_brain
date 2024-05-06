@@ -56,32 +56,27 @@ model.compile(loss = 'binary_crossentropy',
             './nn.png', caption="Model Architecture")
 
 
-def main():
-    st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
-    st.title("Brain Tumor Detection")
-    st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
-               for Tumor Detection.  This application aims to provide prior\
-               diagnosis for the existence of a tumor in a given brain MRI\
-               image.')
-    image = st.file_uploader(
-        "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
-    show_description = st.checkbox("Show model description")
-    describe_model(show_description)
-    if image is not None:
-        display_image_details(image)
-        given_image = load_image(image)
-
-        # Loading the model
-        model = keras.models.load_model("model.h5")
-        prediction = round(model.predict(given_image)[0][0] * 100, 2)
-        st.subheader("Model Prediction")
-        if prediction > 75:
-            st.error(
-                f"The Model Predicts that the image has tumor. Chance: {prediction} %")
-        else:
-            st.success(
-                f"The model predicts there is no tumor in the given image. Chance: {prediction} %")
+st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
+st.title("Brain Tumor Detection")
+st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
+            for Tumor Detection.  This application aims to provide prior\
+            diagnosis for the existence of a tumor in a given brain MRI\
+            image.')
+image = st.file_uploader(
+    "Please upload your Brain MRI Image", type=["png", "jpg", "jpeg"], accept_multiple_files=False)
+show_description = st.checkbox("Show model description")
+describe_model(show_description)
+if image is not None:
+    display_image_details(image)
+    given_image = load_image(image)
 
 
-if __name__ == "__main__":
-    main()
+model = keras.models.load_model("model.h5")
+prediction = round(model.predict(given_image)[0][0] * 100, 2)
+st.subheader("Model Prediction")
+    if prediction > 75:
+        st.error(
+            f"The Model Predicts that the image has tumor. Chance: {prediction} %")
+    else:
+        st.success(
+            f"The model predicts there is no tumor in the given image. Chance: {prediction} %")
