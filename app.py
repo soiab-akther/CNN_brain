@@ -28,7 +28,7 @@ def display_image_details(image):
 
 
 st.image('nn.png', caption="Model Architecture")
-st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
+#st.set_page_config(page_title="Brain Tumor Detection", page_icon="🧠")
 st.title("Brain Tumor Detection")
 st.caption('A predictive Deep Learning Model trained on MRI images of Brain\
             for Tumor Detection.  This application aims to provide prior\
